@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { PasswordInput } from "@/components/PasswordInput";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -55,7 +56,6 @@ export default function RegisterPage() {
           ["name", "Full name", "text", "Ama Mensah"],
           ["email", "Email", "email", "you@email.com"],
           ["phone", "Phone (Ghana)", "tel", "0244 000 000"],
-          ["password", "Password", "password", "••••••••"],
         ] as const
       ).map(([key, label, type, placeholder]) => (
         <label key={key} className="mt-4 block text-sm">
@@ -70,6 +70,17 @@ export default function RegisterPage() {
           />
         </label>
       ))}
+
+      <label className="mt-4 block text-sm">
+        <span className="font-medium">Password</span>
+        <PasswordInput
+          required
+          placeholder="••••••••"
+          value={form.password}
+          onChange={(password) => setForm((f) => ({ ...f, password }))}
+          autoComplete="new-password"
+        />
+      </label>
 
       <label className="mt-4 block text-sm">
         <span className="font-medium">Account type</span>
