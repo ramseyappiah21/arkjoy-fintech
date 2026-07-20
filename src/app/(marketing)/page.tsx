@@ -50,15 +50,15 @@ export default function HomePage() {
 
       <section className="border-b border-forest/10 bg-paper">
         <div className="mx-auto grid max-w-7xl gap-0 lg:grid-cols-3">
-          <div className="relative min-h-[280px] overflow-hidden lg:col-span-1">
+          <div className="relative isolate min-h-[220px] overflow-hidden sm:min-h-[280px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80"
               alt="arkJoy team collaborating in a bright office"
-              className="h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
-          <div className="flex flex-col justify-center bg-gold px-8 py-12 text-ink sm:px-10">
+          <div className="flex flex-col justify-center bg-gold px-6 py-10 text-ink sm:px-10 sm:py-12">
             <p className="font-display text-sm font-semibold tracking-widest uppercase">
               Reference Rate
             </p>
@@ -71,14 +71,14 @@ export default function HomePage() {
               Get a Loan
             </Link>
           </div>
-          <div className="relative min-h-[280px] overflow-hidden bg-forest text-paper">
+          <div className="relative isolate min-h-[220px] overflow-hidden bg-forest text-paper sm:min-h-[280px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
               alt="Digital banking dashboard on a laptop"
-              className="absolute inset-0 h-full w-full object-cover opacity-40"
+              className="absolute inset-0 h-full w-full object-cover opacity-45"
             />
-            <div className="relative flex h-full flex-col justify-end p-8 sm:p-10">
+            <div className="relative z-10 flex h-full min-h-[220px] flex-col justify-end p-6 sm:min-h-[280px] sm:p-10">
               <p className="font-display text-2xl font-bold">Bank from anywhere</p>
               <p className="mt-2 max-w-xs text-sm text-paper/75">
                 Open accounts, move money, and track spending in the arkJoy app.
