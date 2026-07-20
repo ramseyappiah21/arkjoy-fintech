@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a1f1c;
+  --color-forest: #0f3d36;
+  --color-teal: #1a6b5c;
+  --color-mint: #c8efe4;
+  --color-gold: #e8b84a;
+  --color-gold-deep: #c9922a;
+  --color-sand: #f3efe6;
+  --color-mist: #e8f2ef;
+  --color-paper: #faf8f4;
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-rise-delay-1 {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.animate-fade {
+  animation: fade-in 1.1s ease both;
+}
+
+.animate-kenburns {
+  animation: kenburns 18s ease-out forwards;
+}
+
+.bg-mesh {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(26, 107, 92, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(232, 184, 74, 0.16), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 70% 90%, rgba(15, 61, 54, 0.08), transparent 55%),
+    var(--color-paper);
+}
+
+.bg-forest-gradient {
+  background:
+    linear-gradient(135deg, #0a1f1c 0%, #0f3d36 45%, #1a6b5c 100%);
+}
