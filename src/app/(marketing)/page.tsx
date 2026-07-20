@@ -67,15 +67,15 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col justify-center bg-gold px-6 py-10 text-ink sm:px-10 sm:py-12">
-            <p className="font-display text-sm font-semibold tracking-widest uppercase">
+          <div className="flex flex-col justify-center bg-forest px-6 py-10 text-paper sm:px-10 sm:py-12">
+            <p className="font-display text-sm font-semibold tracking-widest text-gold uppercase">
               Reference Rate
             </p>
-            <p className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">10.59%</p>
-            <p className="mt-2 text-sm font-medium">Per annum · Effective 1 Jul 2026</p>
+            <p className="mt-3 font-display text-4xl font-extrabold tracking-tight text-paper sm:text-6xl">10.59%</p>
+            <p className="mt-2 text-sm font-medium text-paper/75">Per annum · Effective 1 Jul 2026</p>
             <Link
               href="/personal#loans"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-forest px-5 py-3.5 text-sm font-semibold text-paper shadow-sm transition hover:bg-ink sm:w-fit"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gold px-5 py-3.5 text-sm font-semibold text-ink shadow-sm transition hover:bg-gold-deep hover:text-paper sm:w-fit"
             >
               Get a Loan
             </Link>
