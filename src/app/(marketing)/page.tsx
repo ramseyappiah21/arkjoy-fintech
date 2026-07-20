@@ -62,7 +62,7 @@ export default function HomePage() {
             <p className="font-display text-sm font-semibold tracking-widest uppercase">
               Reference Rate
             </p>
-            <p className="mt-3 font-display text-6xl font-extrabold tracking-tight">10.59%</p>
+            <p className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-6xl">10.59%</p>
             <p className="mt-2 text-sm font-medium">Per annum · Effective 1 Jul 2026</p>
             <Link
               href="/personal#loans"

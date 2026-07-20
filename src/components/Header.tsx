@@ -25,7 +25,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50">
       <div className="bg-ink text-sand/80">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-xs sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-1.5 text-[11px] sm:px-6 sm:py-2 sm:text-xs lg:px-8">
           <nav className="hidden flex-wrap items-center gap-5 md:flex">
             {utilityLinks.map((link) => (
               <Link
@@ -37,12 +37,14 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <p className="text-sand/60">Customer care · 054 677 4063</p>
+          <a href="tel:+233546774063" className="truncate text-sand/70 hover:text-gold">
+            Care · 054 677 4063
+          </a>
         </div>
       </div>
 
       <div className="border-b border-forest/10 bg-paper/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
           <Logo />
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -60,7 +62,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <Link
               href="/login"
               className="hidden rounded-full border border-forest/20 px-4 py-2 text-sm font-medium text-forest transition hover:border-forest hover:bg-mist sm:inline-flex"
@@ -69,14 +71,15 @@ export function Header() {
             </Link>
             <Link
               href="/register"
-              className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-ink transition hover:bg-gold-deep hover:text-paper"
+              className="rounded-full bg-gold px-3 py-2 text-xs font-semibold text-ink transition hover:bg-gold-deep hover:text-paper sm:px-4 sm:text-sm"
             >
               Open Account
             </Link>
             <button
               type="button"
               aria-label="Toggle menu"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest/15 lg:hidden"
+              aria-expanded={open}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-forest/15 sm:h-10 sm:w-10 lg:hidden"
               onClick={() => setOpen((v) => !v)}
             >
               <span className="sr-only">Menu</span>
@@ -92,29 +95,40 @@ export function Header() {
         </div>
 
         {open && (
-          <div className="border-t border-forest/10 bg-paper px-4 py-4 lg:hidden">
-            <nav className="flex flex-col gap-1">
+          <div className="max-h-[min(70vh,520px)] overflow-y-auto border-t border-forest/10 bg-paper px-3 py-3 sm:px-4 sm:py-4 lg:hidden">
+            <nav className="flex flex-col gap-0.5">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-lg px-3 py-3 hover:bg-mist"
+                  className="rounded-lg px-3 py-2.5 hover:bg-mist"
                   onClick={() => setOpen(false)}
                 >
                   <span className="block font-display font-semibold">{link.label}</span>
                   <span className="text-sm text-ink/50">{link.sub}</span>
                 </Link>
               ))}
+              <div className="my-2 border-t border-forest/10" />
+              {utilityLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink/70 hover:bg-mist"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
                 href="/login"
-                className="mt-2 rounded-lg px-3 py-3 font-medium text-teal"
+                className="mt-1 rounded-lg px-3 py-2.5 font-medium text-teal"
                 onClick={() => setOpen(false)}
               >
                 Internet Banking
               </Link>
               <Link
                 href="/register"
-                className="rounded-lg px-3 py-3 font-medium text-ink"
+                className="rounded-lg bg-gold/20 px-3 py-2.5 font-semibold text-ink"
                 onClick={() => setOpen(false)}
               >
                 Open Account

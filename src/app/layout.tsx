@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
 
@@ -18,6 +18,14 @@ export const metadata: Metadata = {
   title: "arkJoy | Banking that lifts you",
   description:
     "arkJoy is a modern Ghanaian bank for personal and business banking — MoMo-ready transfers, instant loans, GH¢ accounts, and secure digital banking.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#0f3d36",
 };
 
 export default function RootLayout({

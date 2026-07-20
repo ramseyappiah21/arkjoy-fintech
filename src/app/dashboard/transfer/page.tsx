@@ -373,7 +373,7 @@ export default function TransferPage() {
     <div className="grid gap-8 lg:grid-cols-[1fr_300px] lg:items-start">
       <div className="space-y-6">
         <div>
-          <h1 className="font-display text-3xl font-bold text-ink">MoMo & Transfers</h1>
+          <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">MoMo & Transfers</h1>
           <p className="mt-1 text-ink/60">
             Move money between your bank and MoMo. Demo mode works with your real phone number.
           </p>

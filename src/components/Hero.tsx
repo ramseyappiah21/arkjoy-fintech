@@ -49,7 +49,7 @@ export function Hero() {
   const slide = slides[index];
 
   return (
-    <section className="relative min-h-[88vh] overflow-hidden bg-ink text-paper">
+    <section className="relative min-h-[100svh] overflow-hidden bg-ink text-paper sm:min-h-[88vh]">
       {slides.map((s, i) => (
         <div
           key={s.id}
@@ -62,48 +62,48 @@ export function Hero() {
           <img
             src={s.image}
             alt=""
-            className={`h-full w-full object-cover ${i === index ? "animate-kenburns" : ""}`}
+            className={`h-full w-full object-cover object-center ${i === index ? "animate-kenburns" : ""}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/70 to-ink/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-ink/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/70 to-ink/90 sm:bg-gradient-to-r sm:from-ink/92 sm:via-ink/70 sm:to-ink/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-ink/30 sm:from-ink/50 sm:to-ink/20" />
         </div>
       ))}
 
-      <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-4 pb-10 pt-24 sm:min-h-[88vh] sm:justify-center sm:px-6 sm:py-24 lg:px-8">
         <p
           key={`eyebrow-${slide.id}`}
-          className="animate-rise font-display text-sm font-semibold tracking-[0.2em] text-gold uppercase"
+          className="animate-rise font-display text-xs font-semibold tracking-[0.18em] text-gold uppercase sm:text-sm sm:tracking-[0.2em]"
         >
           {slide.eyebrow}
         </p>
         <h1
           key={`title-${slide.id}`}
-          className="animate-rise-delay-1 mt-4 max-w-3xl font-display text-4xl leading-[1.05] font-extrabold tracking-tight text-paper sm:text-5xl lg:text-7xl"
+          className="animate-rise-delay-1 mt-3 max-w-3xl font-display text-[1.85rem] leading-[1.1] font-extrabold tracking-tight text-paper sm:mt-4 sm:text-5xl lg:text-7xl"
         >
           {slide.title}
         </h1>
         <p
           key={`copy-${slide.id}`}
-          className="animate-rise-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-paper/80 sm:text-xl"
+          className="animate-rise-delay-2 mt-4 max-w-xl text-base leading-relaxed text-paper/80 sm:mt-6 sm:text-xl"
         >
           {slide.copy}
         </p>
-        <div className="animate-rise-delay-2 mt-10 flex flex-wrap items-center gap-4">
+        <div className="animate-rise-delay-2 mt-7 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
           <Link
             href={slide.cta.href}
-            className="rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-ink transition hover:bg-gold-deep hover:text-paper"
+            className="inline-flex items-center justify-center rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-ink transition hover:bg-gold-deep hover:text-paper sm:px-7"
           >
             {slide.cta.label}
           </Link>
           <Link
             href="/register"
-            className="rounded-full border border-paper/35 px-7 py-3.5 text-sm font-medium text-paper transition hover:border-paper hover:bg-paper/10"
+            className="inline-flex items-center justify-center rounded-full border border-paper/35 px-6 py-3.5 text-sm font-medium text-paper transition hover:border-paper hover:bg-paper/10 sm:px-7"
           >
             Open an Account
           </Link>
         </div>
 
-        <div className="mt-16 flex items-center gap-3">
+        <div className="mt-10 flex items-center gap-3 sm:mt-16">
           {slides.map((s, i) => (
             <button
               key={s.id}
