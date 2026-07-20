@@ -53,7 +53,7 @@ export default function RegisterPage() {
 
       {(
         [
-          ["name", "Full name", "text", "Ama Mensah"],
+          ["name", "Full name", "text", "Your full name"],
           ["email", "Email", "email", "you@email.com"],
           ["phone", "Phone (Ghana)", "tel", "0244 000 000"],
         ] as const
