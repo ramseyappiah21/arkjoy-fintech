@@ -57,6 +57,15 @@ export default function HomePage() {
               alt="arkJoy team collaborating in a bright office"
               className="absolute inset-0 h-full w-full object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/10" />
+            <div className="relative z-10 flex h-full min-h-[220px] flex-col justify-end p-6 sm:min-h-[280px] sm:p-8">
+              <p className="font-display text-xl font-bold text-paper sm:text-2xl">
+                Loans that move with you
+              </p>
+              <p className="mt-2 max-w-xs text-sm text-paper/80">
+                Salary-backed options with clear rates — no guessing.
+              </p>
+            </div>
           </div>
           <div className="flex flex-col justify-center bg-gold px-6 py-10 text-ink sm:px-10 sm:py-12">
             <p className="font-display text-sm font-semibold tracking-widest uppercase">
@@ -66,7 +75,7 @@ export default function HomePage() {
             <p className="mt-2 text-sm font-medium">Per annum · Effective 1 Jul 2026</p>
             <Link
               href="/personal#loans"
-              className="mt-8 inline-flex w-fit rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition hover:bg-forest"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-forest px-5 py-3.5 text-sm font-semibold text-paper shadow-sm transition hover:bg-ink sm:w-fit"
             >
               Get a Loan
             </Link>
@@ -78,14 +87,15 @@ export default function HomePage() {
               alt="Digital banking dashboard on a laptop"
               className="absolute inset-0 h-full w-full object-cover opacity-45"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-transparent" />
             <div className="relative z-10 flex h-full min-h-[220px] flex-col justify-end p-6 sm:min-h-[280px] sm:p-10">
               <p className="font-display text-2xl font-bold">Bank from anywhere</p>
-              <p className="mt-2 max-w-xs text-sm text-paper/75">
+              <p className="mt-2 max-w-xs text-sm text-paper/80">
                 Open accounts, move money, and track spending in the arkJoy app.
               </p>
               <Link
                 href="/app"
-                className="mt-6 inline-flex w-fit text-sm font-semibold text-gold underline-offset-4 hover:underline"
+                className="mt-6 inline-flex w-fit rounded-full bg-gold px-4 py-2.5 text-sm font-semibold text-ink"
               >
                 Download the app →
               </Link>
