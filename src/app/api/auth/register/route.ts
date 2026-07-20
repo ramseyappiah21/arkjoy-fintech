@@ -3,7 +3,6 @@ import {
   createSessionToken,
   hashPassword,
   setSessionCookie,
-  verifyPassword,
 } from "@/lib/auth";
 import { newId, readDb, writeDb, ensureWalletForUser, type Account } from "@/lib/db";
 

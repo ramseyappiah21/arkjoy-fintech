@@ -1,6 +1,5 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { hashPassword } from "./auth";
 import { detectNetwork, normalizePhone } from "./phone";
 
 export type UserRecord = {
@@ -111,176 +110,11 @@ function id(prefix: string) {
 }
 
 async function seed(): Promise<Database> {
-  const passwordHash = await hashPassword("joybank123");
-  const userId = "usr_demo_ama";
-  const savingsId = "acc_savings_ama";
-  const currentId = "acc_current_ama";
-
-  const now = Date.now();
-  const daysAgo = (d: number) => new Date(now - d * 86400000).toISOString();
-
   return {
-    users: [
-      {
-        id: userId,
-        email: "ama@arkjoy.bank",
-        name: "Ama Mensah",
-        phone: "0244123456",
-        passwordHash,
-        createdAt: daysAgo(120),
-      },
-    ],
-    accounts: [
-      {
-        id: savingsId,
-        userId,
-        name: "arkJoy Savings",
-        type: "savings",
-        currency: "GHS",
-        number: "0012345678901",
-        balance: 18450.75,
-      },
-      {
-        id: currentId,
-        userId,
-        name: "arkJoy Current",
-        type: "current",
-        currency: "GHS",
-        number: "0012345678902",
-        balance: 5230.4,
-      },
-      {
-        id: "acc_usd_ama",
-        userId,
-        name: "USD Foreign Currency",
-        type: "savings",
-        currency: "USD",
-        number: "0012345678903",
-        balance: 820.15,
-      },
-    ],
-    transactions: [
-      {
-        id: id("txn"),
-        userId,
-        accountId: currentId,
-        type: "credit",
-        category: "Salary",
-        description: "Salary — Golden Star Ltd",
-        amount: 4500,
-        counterparty: "Golden Star Ltd",
-        createdAt: daysAgo(2),
-        status: "completed",
-      },
-      {
-        id: id("txn"),
-        userId,
-        accountId: currentId,
-        type: "debit",
-        category: "Transfer",
-        description: "MoMo to Kwame Asante",
-        amount: 250,
-        counterparty: "Kwame Asante",
-        createdAt: daysAgo(2),
-        status: "completed",
-      },
-      {
-        id: id("txn"),
-        userId,
-        accountId: currentId,
-        type: "debit",
-        category: "Bills",
-        description: "ECG prepaid — Accra East",
-        amount: 180.5,
-        counterparty: "ECG",
-        createdAt: daysAgo(3),
-        status: "completed",
-      },
-      {
-        id: id("txn"),
-        userId,
-        accountId: savingsId,
-        type: "credit",
-        category: "Interest",
-        description: "Monthly savings interest",
-        amount: 42.3,
-        counterparty: "arkJoy",
-        createdAt: daysAgo(5),
-        status: "completed",
-      },
-      {
-        id: id("txn"),
-        userId,
-        accountId: currentId,
-        type: "debit",
-        category: "Shopping",
-        description: "Melcom Accra Mall",
-        amount: 315.2,
-        counterparty: "Melcom",
-        createdAt: daysAgo(6),
-        status: "completed",
-      },
-      {
-        id: id("txn"),
-        userId,
-        accountId: currentId,
-        type: "debit",
-        category: "Transfer",
-        description: "School fees — Lincoln Community",
-        amount: 1200,
-        counterparty: "Lincoln Community School",
-        createdAt: daysAgo(8),
-        status: "completed",
-      },
-      {
-        id: id("txn"),
-        userId,
-        accountId: currentId,
-        type: "credit",
-        category: "Transfer",
-        description: "From Kofi Boateng",
-        amount: 500,
-        counterparty: "Kofi Boateng",
-        createdAt: daysAgo(10),
-        status: "completed",
-      },
-      {
-        id: id("txn"),
-        userId,
-        accountId: currentId,
-        type: "debit",
-        category: "Bills",
-        description: "MTN Airtime & Data",
-        amount: 55,
-        counterparty: "MTN",
-        createdAt: daysAgo(11),
-        status: "completed",
-      },
-    ],
-    cards: [
-      {
-        id: "card_visa_ama",
-        userId,
-        accountId: currentId,
-        label: "arkJoy Debit",
-        brand: "Visa",
-        last4: "4821",
-        expiry: "09/28",
-        status: "active",
-        spendingLimit: 10000,
-      },
-      {
-        id: "card_mc_ama",
-        userId,
-        accountId: savingsId,
-        label: "Travel Card",
-        brand: "Mastercard",
-        last4: "7710",
-        expiry: "03/27",
-        status: "active",
-        spendingLimit: 5000,
-      },
-    ],
+    users: [],
+    accounts: [],
+    transactions: [],
+    cards: [],
     billPayees: [
       { id: "bill_ecg", name: "ECG", category: "Utilities" },
       { id: "bill_gwcl", name: "Ghana Water", category: "Utilities" },
@@ -289,26 +123,8 @@ async function seed(): Promise<Database> {
       { id: "bill_dstv", name: "DStv", category: "Entertainment" },
       { id: "bill_nhia", name: "NHIA", category: "Health" },
     ],
-    momoWallets: [
-      {
-        id: "momo_ama",
-        userId,
-        phone: normalizePhone("0244123456"),
-        network: "MTN",
-        balance: 340.5,
-        notifications: [
-          {
-            id: id("sms"),
-            title: "Payment received",
-            body: "Current MoMo balance: GHS 340.50",
-            amount: 50,
-            balance: 340.5,
-            createdAt: daysAgo(1),
-            read: true,
-          },
-        ],
-      },
-    ],
+    momoWallets: [],
+    livePayments: [],
   };
 }
 
@@ -331,6 +147,32 @@ async function migrateDb(db: Database): Promise<Database> {
     db.momoWallets = [];
     changed = true;
   }
+  if (!db.livePayments) {
+    db.livePayments = [];
+    changed = true;
+  }
+
+  // Remove legacy demo account — users must register.
+  const demoIds = new Set(
+    db.users
+      .filter(
+        (u) =>
+          u.id === "usr_demo_ama" ||
+          u.email === "ama@arkjoy.bank"
+      )
+      .map((u) => u.id)
+  );
+  if (demoIds.size) {
+    db.users = db.users.filter((u) => !demoIds.has(u.id));
+    db.accounts = db.accounts.filter((a) => !demoIds.has(a.userId));
+    db.transactions = db.transactions.filter((t) => !demoIds.has(t.userId));
+    db.cards = db.cards.filter((c) => !demoIds.has(c.userId));
+    db.momoWallets = db.momoWallets.filter((w) => !demoIds.has(w.userId));
+    if (db.livePayments) {
+      db.livePayments = db.livePayments.filter((p) => !demoIds.has(p.userId));
+    }
+    changed = true;
+  }
 
   for (const user of db.users) {
     const phone = normalizePhone(user.phone || "");
@@ -344,7 +186,7 @@ async function migrateDb(db: Database): Promise<Database> {
         userId: user.id,
         phone,
         network: detectNetwork(phone),
-        balance: user.id === "usr_demo_ama" ? 340.5 : 0,
+        balance: 0,
         notifications: [],
       });
       changed = true;

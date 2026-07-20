@@ -9,8 +9,8 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = searchParams.get("next") || "/dashboard";
-  const [email, setEmail] = useState("ama@arkjoy.bank");
-  const [password, setPassword] = useState("joybank123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -55,6 +55,8 @@ function LoginForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@email.com"
+          autoComplete="email"
           className="mt-2 w-full rounded-xl border border-forest/15 bg-sand/40 px-4 py-3 outline-none focus:border-teal focus:ring-2 focus:ring-teal/20"
         />
       </label>
@@ -80,14 +82,10 @@ function LoginForm() {
         {loading ? "Signing in…" : "Sign in"}
       </button>
 
-      <p className="mt-4 rounded-xl bg-mist px-3 py-2 text-xs text-ink/55">
-        Demo: <strong>ama@arkjoy.bank</strong> / <strong>joybank123</strong>
-      </p>
-
       <p className="mt-6 text-center text-sm text-ink/60">
         New to arkJoy?{" "}
         <Link href="/register" className="font-semibold text-teal hover:underline">
-          Open an account
+          Create an account
         </Link>
       </p>
     </form>
